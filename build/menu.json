@@ -1,0 +1,30 @@
+{
+  "menu": [ "Desayuno", "Resto del día" ],
+  "Desayuno": 
+  [{
+      "meal": "Café americano",
+      "price": 5
+    },
+    {
+      "meal": "Café con leche",
+      "price": 7
+    },
+    {
+      "meal": "Sandwich con jamón y queso",
+      "price": 10
+    },
+    {
+      "meal": "Jugo natural de fruta",
+      "price": 7
+    }],
+    "almuerzo": 
+      {
+        "simples": 10,
+        "dobles": 15
+      },
+    "sabores": ["pollo", "res", "veggie"],
+    "adicionales": {
+      "huevo": 1,
+      "queso": 1
+    }
+}
