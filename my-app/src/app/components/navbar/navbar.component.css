@@ -1,0 +1,12 @@
+/* NAVBAR 
+font-family: 'Port Lligat Sans', sans-serif;*/
+
+@import url('https://fonts.googleapis.com/css?family=Port+Lligat+Sans');
+div a {
+    font-size: 1.7rem;
+    font-family: 'Port Lligat Sans', sans-serif;
+}
+
+.display-block {
+    display: block;
+}

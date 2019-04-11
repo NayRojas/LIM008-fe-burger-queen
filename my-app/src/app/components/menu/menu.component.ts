@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FirestoreService } from 'src/app/services/firebase-service/firebase-service.service';
+import { Menu } from 'src/app/menu.model';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  order: Menu[];
+  constructor(
+    public firebaseService: FirestoreService) { }
 
   ngOnInit() {
+    this.firebaseService.getMenu()
+    .subscribe(data => {
+      this.order = data.map(e => {
+        return { id: e.payload.doc.id, ...e.payload.doc.data() } as Menu;
+      });
+      console.log('Entro a menu.component.ts');
+      console.log(Menu);
+    });
   }
+}
 
+
+export class NgIfSimple {
+  show: boolean = true;
 }
