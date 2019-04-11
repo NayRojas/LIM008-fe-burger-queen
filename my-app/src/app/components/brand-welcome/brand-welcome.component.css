@@ -1,0 +1,40 @@
+/* WELCOME BRAND
+Contains brand logo and welcome phrase */
+
+@import url('https://fonts.googleapis.com/css?family=Port+Lligat+Sans');
+.half-container {
+    float: left;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 15px;
+}
+
+
+/* .center-display {
+    margin: auto;
+} */
+
+.heigth {
+    height: 100%;
+}
+
+.bran-icon img {
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+.gray-line {
+    border-left-color: gray;
+}
+
+.brown {
+    color: #451C06;
+}
+
+.font-style {
+    font-size: 2rem;
+    font-family: 'Port Lligat Sans', sans-serif;
+    padding: 10px;
+}

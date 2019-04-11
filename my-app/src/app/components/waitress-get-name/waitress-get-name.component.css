@@ -1,0 +1,48 @@
+/* WAITRESS GET NAME */
+
+@import url('https://fonts.googleapis.com/css?family=Port+Lligat+Sans');
+.half-container {
+    float: right;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 15px;
+}
+
+.center-display {
+    margin: auto;
+}
+
+.brown {
+    color: #451C06;
+}
+
+.heigth {
+    height: 100%;
+}
+
+.font-style {
+    font-size: 2.5rem;
+    font-family: 'Port Lligat Sans', sans-serif;
+    padding: 10px;
+    text-align: center;
+}
+
+.font-name {
+    font-size: 2rem;
+    font-family: 'Port Lligat Sans', sans-serif;
+    padding: 3px;
+    text-align: center;
+}
+
+input {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
+}
+
+button {
+    background: rgba(255, 195, 0, 0.9);
+    border-radius: 9px;
+}
