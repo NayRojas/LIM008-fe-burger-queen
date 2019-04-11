@@ -1,12 +1,10 @@
 <div class="text" *ngFor="let item of order">
-    <ul>
-        <button>
-            {{item.id}}
-        </button>
-    </ul>
+    <button id="type-menu">{{item.type}}</button>
 </div>
-<ul *ngIf="">
+<ul>
     <li class="text" *ngFor="let item of order">
-        {{item.id}} {{item.name}} {{item.price}}
+        <a>
+            {{item.name}} {{item.price}}
+        </a>
     </li>
 </ul>

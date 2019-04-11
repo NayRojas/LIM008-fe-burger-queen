@@ -20,12 +20,12 @@ export class MenuComponent implements OnInit {
         return { id: e.payload.doc.id, ...e.payload.doc.data() } as Menu;
       });
       console.log('Entro a menu.component.ts');
-      console.log(Menu);
+      console.log(data);
     });
   }
 }
 
 
-export class NgIfSimple {
-  show: boolean = true;
-}
+// export class menuType {
+//   show: boolean = true;
+// }
