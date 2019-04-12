@@ -18,7 +18,12 @@ export class MenuComponent implements OnInit {
   typeMenu = 'desayuno';
 
   ngOnInit() {
-
+    this.firebaseService.getMenu(this.typeMenu)
+    .subscribe((data: any) => {
+      this.order = data.map(e => {
+        return { id: e.payload.doc.id, ...e.payload.doc.data() } as Menu;
+      });
+    });
     console.log('OnInit');
   }
   onSelectMenuType(typeMenu: string) {
