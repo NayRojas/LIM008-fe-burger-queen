@@ -7,20 +7,26 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 
-export class FirestoreService { constructor(private firestore: AngularFirestore) {}
+export class FirestoreService {
+  constructor(private firestore: AngularFirestore) {}
 
-
-  getMenu() {
-    return this.firestore.collection('Menu').snapshotChanges();
-    // return this.firestore.collection('Menu').where('type', '==', 'desayuno')
+  getMenu(typeMenu: string) {
+    return this.firestore.collection('Menu', ref => ref.where('type', '==', typeMenu)).snapshotChanges();
+    // return this.firestore.collection('Menu').snapshotChanges()
 
   }
+
   getOrders() {
     return this.firestore.collection('Orders').snapshotChanges();
   }
 
 }
 
+
+// getMenuRestoDelDia() {
+//   return this.firestore.collection('Menu').where('type', '==', 'resto del día');
+//   // return this.firestore.collection('Menu').snapshotChanges();
+// }
 
 // export class FirestoreService {
 //   title = 'my-app';

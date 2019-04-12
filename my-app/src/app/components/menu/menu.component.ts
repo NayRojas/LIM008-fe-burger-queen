@@ -11,16 +11,23 @@ export class MenuComponent implements OnInit {
 
   order: Menu[];
   constructor(
-    public firebaseService: FirestoreService) { }
+    public firebaseService: FirestoreService) {
+      console.log('constructor');
+     }
+
+  typeMenu = 'desayuno';
 
   ngOnInit() {
-    this.firebaseService.getMenu()
-    .subscribe(data => {
+
+    console.log('OnInit');
+  }
+  onSelectMenuType(typeMenu: string) {
+    this.typeMenu = typeMenu;
+    this.firebaseService.getMenu(this.typeMenu)
+    .subscribe((data: any) => {
       this.order = data.map(e => {
         return { id: e.payload.doc.id, ...e.payload.doc.data() } as Menu;
       });
-      console.log('Entro a menu.component.ts');
-      console.log(data);
     });
   }
 }

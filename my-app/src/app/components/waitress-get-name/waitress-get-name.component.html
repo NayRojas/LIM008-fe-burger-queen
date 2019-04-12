@@ -6,7 +6,7 @@
                 <p class="brown font-style">¿Cual es tu nombre?</p>
             </div>
             <div>
-                <input class="brown font-name" type="text">
+                <input class="brown font-name" type="text" #box (keyup)="onKey(box.value)">
             </div>
             <div>
                 <button class="brown btn btn-primary" (click)="onClickMe()" type="button">Entrar</button>

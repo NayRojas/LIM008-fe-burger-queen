@@ -1,5 +1,7 @@
-<div class="text" *ngFor="let item of order">
-    <button id="type-menu">{{item.type}}</button>
+<div>
+    <button id="desayuno" (click)="onSelectMenuType('desayuno')">Desayuno</button>
+    <button id="resto-del-día" (click)="onSelectMenuType('resto del día')">Resto del día</button>
+
 </div>
 <ul>
     <li class="text" *ngFor="let item of order">
