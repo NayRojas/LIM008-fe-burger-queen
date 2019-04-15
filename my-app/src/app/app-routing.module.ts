@@ -11,18 +11,13 @@ import { NotFoundComponent } from './pages/core/not-found/not-found.component'
 const appRoutes: Routes =
 [
   {path: '', component: InitPageComponent},  // Este será el path anonimo
-  {path: 'ordenes',
-  component: OrdersPageComponent,
+  {path: 'ordenes/:id', component: OrdersPageComponent,
   children: [
-    {
-        path: 'desayuno',
-        component: OrdersPageComponent
-    },
-    {
-        path: 'resto-del-dia',
-        component: OrdersPageComponent
-    }
-]},
+    { path: 'desayuno', component: OrdersPageComponent },
+    { path: 'resto del dia', component: OrdersPageComponent }
+  ]
+},
+  // {path: 'ordenes/:id', component: OrdersPageComponent},
   {path: 'listoparaservir', component: ReadyToServeComponent},
   {path: 'historial', component: HistorialComponent},
   {path: '**', component: NotFoundComponent}

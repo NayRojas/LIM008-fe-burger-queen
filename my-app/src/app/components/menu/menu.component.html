@@ -1,8 +1,8 @@
 <div>
-    <button id="desayuno" (click)="onSelectMenuType('desayuno')">Desayuno</button>
-    <button id="resto-del-día" (click)="onSelectMenuType('resto del día')">Resto del día</button>
-
+    <button id="desayuno" [routerLink]="['/ordenes', 'desayuno']" (click)="onSelectMenuType('desayuno')">Desayuno</button>
+    <button id="resto-del-día" [routerLink]="['/ordenes', 'resto del dia']" (click)="onSelectMenuType('resto-del-dia')">Resto del día</button>
 </div>
+
 <ul>
     <li class="text" *ngFor="let item of order">
         <a>
