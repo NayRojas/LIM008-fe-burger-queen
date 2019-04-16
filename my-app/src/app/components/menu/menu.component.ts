@@ -1,7 +1,9 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { FirestoreService } from 'src/app/services/firebase-service/firebase-service.service';
-import { Menu } from 'src/app/menu.model';
+// import { FirestoreService } from 'src/app/services/firebase-service/firebase-service.service';
+import { Menu } from '../../menu.model';
 import { ActivatedRoute, Routes, Router } from '@angular/router';
+import { FirestoreService } from '../../services/firebase-service/firebase-service.service';
+import { MenuItemsService } from '../../services/menu-items/menu-items.service';
 
 
 @Component({
@@ -9,25 +11,34 @@ import { ActivatedRoute, Routes, Router } from '@angular/router';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements AfterViewInit {
-
-  order: Menu[];
+export class MenuComponent implements OnInit {
   constructor(
     public firebaseService: FirestoreService,
+    public menuItemsService: MenuItemsService,
     private route: ActivatedRoute,
     private router: Router
-    ) { console.log('constructor');
-  }
+    ) { }
+  order: Menu[];
 
   id = this.route.snapshot.paramMap.get('id');
+  // prueba = this.route.snapshot.paramMap.get('id');
 
-  ngAfterViewInit() {
-  this.gettingData(this.id); // la llamada a este metodo de primero permite que el menu desayuno se muestre por defecto
-  }
   // Event para obtener la ruta hija como param y que esta entre como argumento al metodo (gettingData) que traera la data de Firebase
+  ngOnInit() {
+    this.gettingData(this.id); // la llamada a este metodo de primero permite que el menu desayuno se muestre por defecto
+  }
+
   onSelectMenuType(typeMenu: string) {
     typeMenu = this.id;
+    console.log(typeMenu);
     this.gettingData(typeMenu);
+    // this.prueba = this.route.snapshot.paramMap.get('id');
+    // console.log(this.prueba);
+  }
+
+  passItemToOrder() {
+    this.menuItemsService.selectItem();
+    console.log('Item entro a la orden');
   }
    //  Metodo para obtener menu de Firebase
    gettingData(typeMenu: string) {
@@ -38,6 +49,4 @@ export class MenuComponent implements AfterViewInit {
       });
     });
   }
-
-
 }

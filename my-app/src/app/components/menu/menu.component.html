@@ -1,11 +1,11 @@
 <div>
-    <button id="desayuno" [routerLink]="['/ordenes', 'desayuno']" (click)="onSelectMenuType('desayuno')">Desayuno</button>
-    <button id="resto-del-día" [routerLink]="['/ordenes', 'resto del dia']" (click)="onSelectMenuType('resto-del-dia')">Resto del día</button>
+    <button id="desayuno" [routerLink]="['/ordenes', 'desayuno']" (click)="onSelectMenuType()">Desayuno</button>
+    <button id="resto-del-día" [routerLink]="['/ordenes', 'resto-del-dia']" (click)="onSelectMenuType()">Resto del día</button>
 </div>
 
 <ul>
     <li class="text" *ngFor="let item of order">
-        <a>
+        <a (click)="passItemToOrder()">
             {{item.name}} {{item.price}}
         </a>
     </li>

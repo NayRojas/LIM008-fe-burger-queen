@@ -14,13 +14,13 @@ const appRoutes: Routes =
   {path: 'ordenes/:id', component: OrdersPageComponent,
   children: [
     { path: 'desayuno', component: OrdersPageComponent },
-    { path: 'resto del dia', component: OrdersPageComponent }
+    { path: 'resto-del-dia', component: OrdersPageComponent }
   ]
 },
-  // {path: 'ordenes/:id', component: OrdersPageComponent},
+  {path: 'ordenes', component: OrdersPageComponent},
   {path: 'listoparaservir', component: ReadyToServeComponent},
-  {path: 'historial', component: HistorialComponent},
-  {path: '**', component: NotFoundComponent}
+  {path: 'historial', component: HistorialComponent}
+  // {path: '**', component: NotFoundComponent}
  ];
 
 @NgModule({
