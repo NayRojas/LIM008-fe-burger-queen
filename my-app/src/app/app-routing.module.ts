@@ -8,13 +8,19 @@ import { ReadyToServeComponent } from './pages/ready-to-serve/ready-to-serve.com
 import { NotFoundComponent } from './pages/core/not-found/not-found.component'
 // import { provideForRootGuard } from '@angular/router/src/router_module';
 
-const appRoutes: Routes = 
+const appRoutes: Routes =
 [
   {path: '', component: InitPageComponent},  // Este será el path anonimo
+  {path: 'ordenes/:id', component: OrdersPageComponent,
+  children: [
+    { path: 'desayuno', component: OrdersPageComponent },
+    { path: 'resto-del-dia', component: OrdersPageComponent }
+  ]
+},
   {path: 'ordenes', component: OrdersPageComponent},
   {path: 'listoparaservir', component: ReadyToServeComponent},
-  {path: 'historial', component: HistorialComponent}, 
-  {path: '**', component: NotFoundComponent}
+  {path: 'historial', component: HistorialComponent}
+  // {path: '**', component: NotFoundComponent}
  ];
 
 @NgModule({
@@ -23,3 +29,4 @@ const appRoutes: Routes =
  })
 
  export class AppRoutingModule {}
+
