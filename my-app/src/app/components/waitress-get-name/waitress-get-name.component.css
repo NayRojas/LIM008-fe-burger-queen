@@ -11,6 +11,8 @@
 
 .center-display {
     margin: auto;
+    text-align: center;
+    padding: 15px;
 }
 
 .brown {
@@ -24,7 +26,6 @@
 .font-style {
     font-size: 2.5rem;
     font-family: 'Port Lligat Sans', sans-serif;
-    padding: 10px;
     text-align: center;
 }
 
@@ -44,5 +45,26 @@ input {
 
 button {
     background: rgba(255, 195, 0, 0.9);
+    width: 100%;
     border-radius: 9px;
+    margin-top: 15%;
+}
+
+button:hover{
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+    transition: box-shadow 0.s ease-in-out;
+}
+
+button:active{
+    background: rgba(67, 199, 50, 0.9);
+}
+
+
+.container{
+    height: 695px;
+    overflow: hidden;
+}
+
+.margin{
+    margin-top: 20%;
 }

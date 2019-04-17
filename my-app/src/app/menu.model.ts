@@ -4,7 +4,7 @@ export class Menu {
   type: string;
   name: string;
   price: number;
-}
+  category: string}
 
 export class Orders {
   order: number;

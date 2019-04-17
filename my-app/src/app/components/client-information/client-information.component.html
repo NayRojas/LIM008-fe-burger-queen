@@ -1,3 +1,27 @@
-<p>
-  client-information works!
-</p>
+<div  class="container-fluid">
+  <div class="display">
+    <p>
+      Nombre del cliente
+    </p>
+    <input #newClient (keyup.enter)="onClick(newClient.value)"
+    (blur)="onClick(newClient.value); newClient.value='' " type="text">
+  </div>
+  <div class="display">
+    <p>Mesa</p>
+  <select name="OS" #newTable (keyup.enter)="onClickTable(newTable.value)"
+  (blur)="onClickTable(newTable.value); newTable.value='' " type="text">
+    <option value="1" >1</option> 
+    <option value="2">2</option> 
+    <option value="3">3</option>
+    <option value="10">4</option> 
+    <option value="11">5</option> 
+    <option value="12">6</option> 
+    <option value="12">7</option> 
+    <option value="12">8</option> 
+    <option value="12">9</option> 
+    <option value="12">10</option> 
+  </select>
+  </div>
+</div>
+
+
