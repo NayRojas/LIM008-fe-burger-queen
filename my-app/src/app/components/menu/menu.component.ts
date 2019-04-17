@@ -1,10 +1,10 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 // import { FirestoreService } from 'src/app/services/firebase-service/firebase-service.service';
 import { Menu } from '../../menu.model';
-import { ActivatedRoute, Routes, Router } from '@angular/router';
+import { ActivatedRoute, Routes, Router, NavigationEnd } from '@angular/router';
 import { FirestoreService } from '../../services/firebase-service/firebase-service.service';
 import { MenuItemsService } from '../../services/menu-items/menu-items.service';
-
+import { ItemsToOrderService } from '../../services/items-to-order/items-to-order.service';
 
 @Component({
   selector: 'app-menu',
@@ -12,12 +12,28 @@ import { MenuItemsService } from '../../services/menu-items/menu-items.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  counter: number;
+  item: string;
+  price: number;
+
+
   constructor(
     public firebaseService: FirestoreService,
     public menuItemsService: MenuItemsService,
     private route: ActivatedRoute,
-    private router: Router
-    ) { }
+    private router: Router,
+    private itemsToOrder: ItemsToOrderService 
+    ) { 
+      this.itemsToOrder.currentNumber.subscribe(numb => {
+      this.counter = numb;
+    })
+      this.itemsToOrder.currentItem.subscribe(product =>{
+        this.item = product;
+    })
+      this.itemsToOrder.currentPrice.subscribe(money =>{
+        this.price = money;
+    })
+    }
   order: Menu[];
 
   id = this.route.snapshot.paramMap.get('id');
@@ -26,20 +42,24 @@ export class MenuComponent implements OnInit {
   // Event para obtener la ruta hija como param y que esta entre como argumento al metodo (gettingData) que traera la data de Firebase
   ngOnInit() {
     this.gettingData(this.id); // la llamada a este metodo de primero permite que el menu desayuno se muestre por defecto
+    this.router.events.subscribe(e => {
+      if (e instanceof NavigationEnd) {
+        const menuItems= e.url.substring(e.url.lastIndexOf('/') + 1, e.url.length);
+        this.gettingData(menuItems)
+      }
+    })
   }
 
-  onSelectMenuType(typeMenu: string) {
-    typeMenu = this.id;
-    console.log(typeMenu);
-    this.gettingData(typeMenu);
-    // this.prueba = this.route.snapshot.paramMap.get('id');
-    // console.log(this.prueba);
-  }
+  // metodo que permitia el cambio de la ruta hija y actualizar el param segun el fuese el menu que se seleccionase
+  // onSelectMenuType(typeMenu: string) {
+  //   typeMenu = this.id;
+  //   console.log(this.gettingData)
+  //   console.log(this.gettingData(typeMenu))
+  //   this.gettingData(typeMenu);
+  //   // this.prueba = this.route.snapshot.paramMap.get('id');
+  //   // console.log(this.prueba);
+  // }
 
-  passItemToOrder() {
-    this.menuItemsService.selectItem();
-    console.log('Item entro a la orden');
-  }
    //  Metodo para obtener menu de Firebase
    gettingData(typeMenu: string) {
     this.firebaseService.getMenu(typeMenu)
@@ -49,4 +69,14 @@ export class MenuComponent implements OnInit {
       });
     });
   }
+
+  sumItem(){
+    const newNumber = this.counter + 1;
+    const newItem = this.item + 1; 
+    const newPrice = this.price;
+    this.itemsToOrder.changeNumber(newNumber);
+    this.itemsToOrder.changeItem(newItem);
+    this.itemsToOrder.changePrice(newPrice);
+  }
+
 }

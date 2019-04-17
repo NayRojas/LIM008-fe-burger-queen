@@ -1,0 +1,82 @@
+.half-container {
+    float: left;
+    width: 50%;
+    height: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 1px;
+}
+
+.background-gray{
+    background-color: rgb(219, 219, 219)
+}
+
+.padding{
+padding: 10px;
+}
+
+.font-style-title {
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: 'Port Lligat Sans', sans-serif;
+    /* padding: 10px; */
+}
+
+.font-style-p {
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-family: 'Port Lligat Sans', sans-serif;
+    margin-bottom: 5px;
+}
+
+
+.font-style-dollar {
+    font-size: 2rem;
+    font-weight: 500;
+    font-family: 'Port Lligat Sans', sans-serif;
+    /* padding: 10px; */
+}
+
+.font-style {
+    font-size: 2rem;
+    font-family: 'Port Lligat Sans', sans-serif;
+    text-align: center;
+    color: white;
+}
+div button{
+    display: block;
+    margin: auto;
+}
+
+button {
+    background: #008D17;
+    border-radius: 9px;
+    width: 50%;
+    margin-top: 15%;
+}
+
+button:hover{
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+    transition: box-shadow 0.s ease-in-out;
+}
+
+button:active{
+    background: rgba(67, 199, 50, 0.9);
+}
+
+.text-right{
+    padding-left: 60%;
+}
+
+.text-far{
+    padding-left: 20%;
+}
+
+.text-close{
+    margin-left: 3%;
+}
+
+.black{
+    color: rgb(48, 48, 48) ;
+    font-size: 1rem;
+}

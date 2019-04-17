@@ -1,3 +1,43 @@
-<p>
-  order-items works!
-</p>
+<div class="container container-fluid half-container">
+    <div class="background-gray padding ">
+        <p class= "font-style-title">
+          Orden N°
+        </p>
+        <p class="font-style-p">
+          El cliente ha ordenado:
+        </p>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Cant.</th>
+                <th scope="col" class="text-close">Items</th>
+                <th scope="col">Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let dato of datos">
+                <th class="black" (click)="lessItem()">
+                    <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                  </th>
+                <td>{{counter}}</td>
+                <td>{{dato}}</td>
+                <td>$ 5</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+
+    <div class="padding">
+        <p class="font-style-title ">Total <span class="font-style-dollar text-right">$ 00.00</span></p>
+    </div>
+    
+    <div>
+        <button class="btn centered font-style" data-toggle="modal" data-target="#exampleModalLong">ORDENAR</button>
+          <app-order-resume class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true"></app-order-resume>
+    </div>
+</div>
+
+

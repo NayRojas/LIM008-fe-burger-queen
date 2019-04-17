@@ -1,0 +1,14 @@
+.display{
+    display: inline-block;
+    border-spacing: 3%;
+    padding: 3% 5% 3% 5%;
+}
+
+.half-container {
+    float: left;
+    width: 50%;
+    height: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 20px;
+}

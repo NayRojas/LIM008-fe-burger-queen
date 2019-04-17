@@ -5,29 +5,43 @@ Contains brand logo and welcome phrase */
 .half-container {
     float: left;
     width: 50%;
+    height: 100%;
     margin-right: auto;
     margin-left: auto;
-    padding: 15px;
+    padding: 20px;
 }
 
+.container{
+    height: 695px;
+    overflow: hidden;
+}
 
-/* .center-display {
+.center-display {
     margin: auto;
-} */
+}
 
 .heigth {
     height: 100%;
 }
 
+div .bran-icon{
+    display: flex;
+    justify-content: center;
+}
+
 .bran-icon img {
     max-width: 100%;
-    height: auto;
     margin: auto;
 }
 
 .gray-line {
-    border-left-color: gray;
+    border-right-color: rgb(128, 6, 6);
 }
+
+.align-items-center {
+    -ms-flex-align: center!important;
+    align-items: center!important;
+  }
 
 .brown {
     color: #451C06;
@@ -36,5 +50,26 @@ Contains brand logo and welcome phrase */
 .font-style {
     font-size: 2rem;
     font-family: 'Port Lligat Sans', sans-serif;
-    padding: 10px;
+    /* padding: 10px; */
+}
+
+img{
+    height: 80%;
+    width: 80%;
+}
+
+.box-shadow{
+    box-shadow: 0 0 15px 5px rgba(31, 73, 125, 0.8);
+
+}
+
+.fill { 
+    min-height: 100%;
+    height: 100%;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
 }
