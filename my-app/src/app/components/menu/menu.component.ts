@@ -3,8 +3,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Menu } from '../../menu.model';
 import { ActivatedRoute, Routes, Router, NavigationEnd } from '@angular/router';
 import { FirestoreService } from '../../services/firebase-service/firebase-service.service';
-import { MenuItemsService } from '../../services/menu-items/menu-items.service';
-import { ItemsToOrderService } from '../../services/items-to-order/items-to-order.service';
+import { ItemsToOrderService } from '../../services/local-service/items-to-order.service';
 
 @Component({
   selector: 'app-menu',
@@ -19,20 +18,19 @@ export class MenuComponent implements OnInit {
 
   constructor(
     public firebaseService: FirestoreService,
-    public menuItemsService: MenuItemsService,
     private route: ActivatedRoute,
     private router: Router,
     private itemsToOrder: ItemsToOrderService 
-    ) { 
+    ) {
       this.itemsToOrder.currentNumber.subscribe(numb => {
       this.counter = numb;
-    })
+    });
       this.itemsToOrder.currentItem.subscribe(product =>{
         this.item = product;
-    })
+    });
       this.itemsToOrder.currentPrice.subscribe(money =>{
         this.price = money;
-    })
+    });
     }
   order: Menu[];
 
@@ -44,10 +42,10 @@ export class MenuComponent implements OnInit {
     this.gettingData(this.id); // la llamada a este metodo de primero permite que el menu desayuno se muestre por defecto
     this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
-        const menuItems= e.url.substring(e.url.lastIndexOf('/') + 1, e.url.length);
-        this.gettingData(menuItems)
+        const menuItems = e.url.substring(e.url.lastIndexOf('/') + 1, e.url.length);
+        this.gettingData(menuItems);
       }
-    })
+    });
   }
 
   // metodo que permitia el cambio de la ruta hija y actualizar el param segun el fuese el menu que se seleccionase
@@ -70,13 +68,9 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  sumItem(){
+  sumItem() {
     const newNumber = this.counter + 1;
-    const newItem = this.item + 1; 
-    const newPrice = this.price;
     this.itemsToOrder.changeNumber(newNumber);
-    this.itemsToOrder.changeItem(newItem);
-    this.itemsToOrder.changePrice(newPrice);
   }
 
 }

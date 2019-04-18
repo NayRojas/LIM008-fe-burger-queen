@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemsToOrderService } from '../../services/items-to-order/items-to-order.service';
+import { ItemsToOrderService } from '../../services/local-service/items-to-order.service';
 
 
 @Component({
@@ -9,19 +9,37 @@ import { ItemsToOrderService } from '../../services/items-to-order/items-to-orde
 })
 export class OrderItemsComponent implements OnInit {
   counter: number;
-  datos: string;
-  constructor(private itemsToOrder: ItemsToOrderService) { 
+  name: string;
+  table: number;
+  constructor(private itemsToOrder: ItemsToOrderService) {
     this.itemsToOrder.currentNumber.subscribe(numb => {
       this.counter = numb;
-    })
+    });
+    this.itemsToOrder.currentName.subscribe(name => {
+      this.name = name;
+    });
+    this.itemsToOrder.currentTable.subscribe(tab => {
+      this.table = tab;
+    });
+
   }
 
   ngOnInit() {
   }
 
-  
-  lessItem(){
+  lessItem() {
     const newNumber = this.counter - 1;
     this.itemsToOrder.changeNumber(newNumber);
+  }
+
+  getClientName() {
+    const newClient = this.name;
+    this.itemsToOrder.getName(newClient);
+  }
+
+  getTableNumber() {
+  const newTable = this.table;
+  this.itemsToOrder.getTable(newTable);
+  console.log('Hola');
   }
 }
