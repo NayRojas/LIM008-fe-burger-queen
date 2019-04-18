@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemsToOrderService } from '../../services/local-service/items-to-order.service';
 
 @Component({
   selector: 'app-client-information',
@@ -7,32 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientInformationComponent implements OnInit {
   client: string = '';
-  table: number = 0;
+  table = 0;
 
-  constructor() { }
+  constructor(private itemsToOrder: ItemsToOrderService) { }
 
   ngOnInit() {
   }
 
-  onClick(newClient: string){
-    if(newClient !== ''){
-      this.getName(newClient)
-    } else if(newClient === ''){
-      console.log('¿Como se llama nuestro cliente?')
+  onClick(newClient: string) {
+    if( newClient !== '') {
+      this.itemsToOrder.getName(newClient);
+    } else if (newClient === '') {
+      console.log('¿Como se llama nuestro cliente?');
     }
   }
 
-  onClickTable(newTable: number){
-    this.getTable(newTable);
-  }
 
-  getName(newWaitress: string) {
-    this.client = newWaitress;
-    console.log(this.client)
-  }
-
-  getTable(newTable: number){
-    this.table = newTable;
-    console.log(this.table)
+  getTable(newTable: number) {
+    // this.table = newTable;
+    this.itemsToOrder.getTable(newTable);
+    // console.log(this.table);
   }
 }

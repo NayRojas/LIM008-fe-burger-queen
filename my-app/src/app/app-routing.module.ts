@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { InitPageComponent } from './pages/init-page/init-page.component';
 import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
-import { HistorialComponent } from './pages/historial/historial.component';
-import { ReadyToServeComponent } from './pages/ready-to-serve/ready-to-serve.component';
+// import { HistorialComponent } from './pages/historial/historial.component';
+// import { ReadyToServeComponent } from './pages/ready-to-serve/ready-to-serve.component';
 import { NotFoundComponent } from './pages/core/not-found/not-found.component'
 // import { provideForRootGuard } from '@angular/router/src/router_module';
 
@@ -18,8 +18,8 @@ const appRoutes: Routes =
   ]
 },
   {path: 'ordenes', component: OrdersPageComponent},
-  {path: 'listoparaservir', component: ReadyToServeComponent},
-  {path: 'historial', component: HistorialComponent}
+  // {path: 'listoparaservir', component: ReadyToServeComponent},
+  // {path: 'historial', component: HistorialComponent}
   // {path: '**', component: NotFoundComponent}
  ];
 

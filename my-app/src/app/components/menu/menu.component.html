@@ -1,23 +1,23 @@
-<div class= " container half-container-menu shadow">
+<div class=" container half-container-menu shadow">
     <div>
-            <app-client-information ></app-client-information>
+        <app-client-information></app-client-information>
 
     </div>
 
-        <div class="display container-fluid padding">
-            <div class="text-align">
-                <button class="button" id="desayuno" [routerLink]="['/ordenes', 'desayuno']" >Desayuno</button>
-                <button id="resto-del-día" [routerLink]="['/ordenes', 'resto-del-dia']" >Resto del día</button>
-            </div>
-            <div class=" text-left padding">
-                    <button class="text-left button-item" *ngFor="let item of order">
+    <div class="display container-fluid padding">
+        <div class="text-align">
+            <button class="button" id="desayuno" [routerLink]="['/ordenes', 'desayuno']">Desayuno</button>
+            <button id="resto-del-día" [routerLink]="['/ordenes', 'resto-del-dia']">Resto del día</button>
+        </div>
+        <div class=" text-left padding">
+            <button class="text-left button-item" *ngFor="let item of order, let i = index" (click)="sumItem()">
                         <a class="" (click)="sumItem()">
                             {{item.name}} <span class="text-right">${{item.price}}</span>
                         </a>
                     </button>
-            </div>
+        </div>
 
-            <!-- prueba de estilo con dropdown y ngIf para category
+        <!-- prueba de estilo con dropdown y ngIf para category
 
                             <div class=" text-left padding btn-group-horizontal" role="group">
                 <button id="btnGroupDrop1" class=" text-left button-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button">Café</button>
@@ -53,7 +53,6 @@
                     </li>
                 </ul>
             </div>-->
-           
-        </div>
-</div>
 
+    </div>
+</div>
