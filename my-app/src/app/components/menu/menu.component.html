@@ -10,9 +10,11 @@
             <button id="resto-del-día" [routerLink]="['/ordenes', 'resto-del-dia']">Resto del día</button>
         </div>
         <div class=" text-left padding">
-            <button class="text-left button-item" *ngFor="let item of order, let i = index" (click)="sumItem()">
-                        <a class="" (click)="sumItem()">
+            <button class="text-left button-item" *ngFor="let item of order , let i = index"  (click)="addToCheck()">
+                        <a class=""  #newItem (click)="getItem(newItem.value)" (blur)="getItem(newItem.value); newItem.value='' ">
+                            <!-- {{item.name}}  -->
                             {{item.name}} <span class="text-right">${{item.price}}</span>
+
                         </a>
                     </button>
         </div>

@@ -18,16 +18,22 @@
                     <th scope="col">Cant.</th>
                     <th scope="col" class="text-close">Items</th>
                     <th scope="col">Precio</th>
+                    <th scope="col">Total</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr *ngFor="let item of ">
                     <th class="black" (click)="lessItem()">
                         <i class="fa fa-minus-circle" aria-hidden="true"></i>
                     </th>
-                    <td>{{counter}}</td>
-                    <td>Cafe</td>
+                    <!-- <td>{{item.quantity}}</td> -->
+                    <td>{{item.name}}</td>
+                    <td>{{item.price | currency: 'USD'}}</td>
                     <td>$ 5</td>
+                    <td class="black" (click)="removeItem(item)">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </td>
                 </tr>
             </tbody>
         </table>

@@ -15,3 +15,20 @@ export class Orders {
   client: string;
   waitress: string;
 }
+
+export interface Order {
+  orderNumber: string;
+  items?: Item[];
+  cartTotal: number;
+  cartNumItems?: number;
+}
+
+export interface Item {
+  id?: number;
+  name: string;
+  price: number;
+  item_type: string;
+  img_name?: string;
+  img_url?: string;
+  quantity: number;
+}
