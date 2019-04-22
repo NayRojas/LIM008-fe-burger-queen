@@ -8,11 +8,12 @@
 </tr>
 </table>
 
+[![version](https://img.shields.io/badge/version-0.1-orange.svg)](https://github.com/NayRojas/LIM008-fe-burger-queen)
 
 ## Demo
-MVp demo :  https://nayrojas.github.io/LIM008-fe-burger-queen/
+MVP demo :  https://nayrojas.github.io/LIM008-fe-burger-queen/
 
-Prototipo navegable :  shorturl.at/nIJYZ
+Prototipo navegable :  https://drive.google.com/file/d/1oZ_Xnc7aNzCfCrGJ4a4s5G0_RfGavFwd/view
 
 
 ## Sitio
