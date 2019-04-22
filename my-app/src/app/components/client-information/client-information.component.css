@@ -12,20 +12,3 @@
     margin-left: auto;
     padding: 20px;
 }
-
-.capitalize{
-    text-transform: capitalize;
-}
-
-.font-style-p {
-    font-size: 1.3rem;
-    font-weight: 400;
-    font-family: 'Port Lligat Sans', sans-serif;
-    margin-bottom: 5px;
-}
-
-input {
-    outline: 0;
-    border-width: 0 0 1px;
-    border-color: rgb(99, 99, 99);
-  }

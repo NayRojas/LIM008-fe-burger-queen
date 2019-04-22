@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WaitressGetNameComponent } from './waitress-get-name.component';
 
-xdescribe('WaitressGetNameComponent', () => {
+describe('WaitressGetNameComponent', () => {
   let component: WaitressGetNameComponent;
   let fixture: ComponentFixture<WaitressGetNameComponent>;
 
