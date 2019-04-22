@@ -19,7 +19,7 @@ Prototipo navegable :  https://drive.google.com/file/d/1oZ_Xnc7aNzCfCrGJ4a4s5G0_
 ## Sitio
 
 ### PWA
-Construida como una SPA y PWA, se pretende la sostenibilidad de la aplicación y la mejora de experiencia del usuario.
+Construida como una SPA y PWA, pretende la sostenibilidad de la aplicación y la mejora de experiencia del usuario.
 
 ![](https://i.ibb.co/88MYfLs/image.png)
 
@@ -58,6 +58,19 @@ Se aplican los metodos para las funciones que permitiran:
 - **Definir aspectos del manifiesto.**
 
 
+## UX Design 
+
+#### Feedback de test de usabilidad 🙎🙍
+
+Tópicos | Observación del usuario
+------------ | -------------
+Home page | Se puede mantener en el aspecto actual, sin embargo serpía interesante dar la bienvenida y optimizar el ux writing.
+Informacion del cliente | Mejorar el visual de esa parte, el cliente es parte vital del negocio y el mesonero debe saberlo aun en ese momento cuando le pida el nombre
+Menu | Colocar botones mas llamativos y quitar las imagenes porque voy a cambiar de menu pronto. 
+Resumen de orden | Se ve limpio y entendible. Colocar un boton para sunar en esa misma opcion. 
+Visual design | Los colores son agradables y no tan llamativos respetan la marca
+Usabilidad general  | Deberian tener mas atajos y mejorar la vista en vertical.
+
 ## Construido con 
 
 - [Angular](https://angular.io/) - Creado con este framework que permitió la modularidad del proyecto.
@@ -75,6 +88,7 @@ Se aplican los metodos para las funciones que permitiran:
 - Aplicar metodo que permita priorizar visualmente la orden una vez se comienza a llenar, evitando el cansancio visual. 
 
 
+
 - Decide comparison models of Stocks. (suggestions are most welcome).
 - Another WebApp, capable of comparing at least 10 stocks.
 
@@ -83,4 +97,3 @@ Se aplican los metodos para las funciones que permitiran:
 [![Nay Rojas](https://i.ibb.co/RgZVtCr/image.png)](https://github.com/iharsh234)  | [![Quandl.com](https://i.ibb.co/71FHKvt/image.png[/img][/url])](https://www.quandl.com/)
 ---|---
 [Nay Rojas ](https://github.com/NayRojas) |[Laboratoria](https://github.com/Laboratoria)
-
