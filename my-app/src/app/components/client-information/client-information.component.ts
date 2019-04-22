@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemsToOrderService } from '../../services/local-service/items-to-order.service';
+import { ItemsToOrderService } from '../../services/local-service/offline-local-service';
 
 @Component({
   selector: 'app-client-information',
@@ -7,26 +7,25 @@ import { ItemsToOrderService } from '../../services/local-service/items-to-order
   styleUrls: ['./client-information.component.css']
 })
 export class ClientInformationComponent implements OnInit {
-  client: string = '';
-  table = 0;
+  // Variables inicializan valores en componente para enviar datos.
+  client = '';
+  table = 1;
 
   constructor(private itemsToOrder: ItemsToOrderService) { }
 
   ngOnInit() {
   }
-
+// Esta funcion obtiene el valor del nombre del cliente y lo envia al servicio para luego ser reutilizado donde sea necesario
   onClick(newClient: string) {
-    if( newClient !== '') {
+    if (newClient !== '') {
       this.itemsToOrder.getName(newClient);
-    } else if (newClient === '') {
-      console.log('¿Como se llama nuestro cliente?');
+    } else {
+      alert('¿Como se llama nuestro cliente?');
     }
   }
 
-
+// este metodo permite obtener el numero de la mesa y enviarlo al servicio para luego reutilizarlo en donde desees
   getTable(newTable: number) {
-    // this.table = newTable;
     this.itemsToOrder.getTable(newTable);
-    // console.log(this.table);
   }
 }

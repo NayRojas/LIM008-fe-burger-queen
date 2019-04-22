@@ -1,8 +1,8 @@
 {
     "name": "Burguer Queen",
     "short_name": "BurguerQueen",
-    "theme_color": "#1976d2",
-    "background_color": "#fafafa",
+    "theme_color": "#1F1F1F",
+    "background_color": "#FFC300",
     "display": "standalone",
     "scope": "/",
     "start_url": "http://localhost:8080/",
