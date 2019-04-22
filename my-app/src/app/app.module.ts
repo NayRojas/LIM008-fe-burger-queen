@@ -16,6 +16,7 @@ import { InitPageComponent } from './pages/init-page/init-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ClientInformationComponent } from './components/client-information/client-information.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { FireStoreService } from './services/firebase-service/firebase-service.service';
 
 
 
@@ -40,7 +41,7 @@ import { MenuComponent } from './components/menu/menu.component';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
 
-  providers: [],
+  providers: [FireStoreService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

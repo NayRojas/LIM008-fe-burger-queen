@@ -19,7 +19,7 @@ Prototipo navegable :  https://drive.google.com/file/d/1oZ_Xnc7aNzCfCrGJ4a4s5G0_
 ## Sitio
 
 ### PWA
-Construida como una SPA y PWA, se pretende la sostenibilidad de la aplicación y la mejora de experiencia del usuario.
+Construida como una SPA y PWA, pretende la sostenibilidad de la aplicación y la mejora de experiencia del usuario.
 
 ![](https://i.ibb.co/88MYfLs/image.png)
 
@@ -97,4 +97,3 @@ Usabilidad general  | Deberian tener mas atajos y mejorar la vista en vertical.
 [![Nay Rojas](https://i.ibb.co/RgZVtCr/image.png)](https://github.com/iharsh234)  | [![Quandl.com](https://i.ibb.co/71FHKvt/image.png[/img][/url])](https://www.quandl.com/)
 ---|---
 [Nay Rojas ](https://github.com/NayRojas) |[Laboratoria](https://github.com/Laboratoria)
-
