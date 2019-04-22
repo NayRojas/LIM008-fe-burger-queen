@@ -69,7 +69,7 @@ button:active{
 }
 
 .text-far{
-    padding-left: 20%;
+    padding-left: 25%;
 }
 
 .text-close{
@@ -79,4 +79,14 @@ button:active{
 .black{
     color: rgb(48, 48, 48) ;
     font-size: 1rem;
+}
+
+.none{
+    border: none; 
+    border-width: 0; 
+    box-shadow: none;
+}
+
+.white{
+    color: white;
 }

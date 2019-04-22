@@ -1,9 +1,9 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 // import { FirestoreService } from 'src/app/services/firebase-service/firebase-service.service';
-import { Menu } from '../../menu.model';
+import { Menu} from '../../menu.model';
 import { ActivatedRoute, Routes, Router, NavigationEnd } from '@angular/router';
 import { FirestoreService } from '../../services/firebase-service/firebase-service.service';
-import { ItemsToOrderService } from '../../services/local-service/items-to-order.service';
+import { ItemsToOrderService } from '../../services/local-service/offline-local-service';
 
 @Component({
   selector: 'app-menu',
@@ -11,34 +11,38 @@ import { ItemsToOrderService } from '../../services/local-service/items-to-order
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  counter: number;
-  item: string;
-  price: number;
+  btn = document.querySelector('.menu-btn');
+  menu: any = [];
+  pedidos = {};
 
+  products: any = [];
 
   constructor(
+    // Los servicios que almacenan la logica pura
+    // Este almacena la lógica Firebase
     public firebaseService: FirestoreService,
+    // Este almacena la lógica local
+    private itemsToOrder: ItemsToOrderService,
+    // Estos alamacenan los modulos enrutadores de @Angular
     private route: ActivatedRoute,
     private router: Router,
-    private itemsToOrder: ItemsToOrderService 
     ) {
-      this.itemsToOrder.currentNumber.subscribe(numb => {
-      this.counter = numb;
-    });
-      this.itemsToOrder.currentItem.subscribe(product =>{
-        this.item = product;
-    });
-      this.itemsToOrder.currentPrice.subscribe(money =>{
-        this.price = money;
-    });
-    }
-  order: Menu[];
+      this.firebaseService.getMenu(this.id).subscribe(menus => {
+        this.menu = menus;
+      });
 
+      this.itemsToOrder.menus.subscribe(menu => {
+        this.pedidos = menu;
+      });
+    }
+
+  order: Menu[];
   id = this.route.snapshot.paramMap.get('id');
-  // prueba = this.route.snapshot.paramMap.get('id');
 
   // Event para obtener la ruta hija como param y que esta entre como argumento al metodo (gettingData) que traera la data de Firebase
   ngOnInit() {
+
+    // Subscriptor de eventos
     this.gettingData(this.id); // la llamada a este metodo de primero permite que el menu desayuno se muestre por defecto
     this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
@@ -48,29 +52,23 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  // metodo que permitia el cambio de la ruta hija y actualizar el param segun el fuese el menu que se seleccionase
-  // onSelectMenuType(typeMenu: string) {
-  //   typeMenu = this.id;
-  //   console.log(this.gettingData)
-  //   console.log(this.gettingData(typeMenu))
-  //   this.gettingData(typeMenu);
-  //   // this.prueba = this.route.snapshot.paramMap.get('id');
-  //   // console.log(this.prueba);
-  // }
-
-   //  Metodo para obtener menu de Firebase
-   gettingData(typeMenu: string) {
+  // Metodo para obtener menu de Firebase
+  gettingData(typeMenu: string) {
     this.firebaseService.getMenu(typeMenu)
     .subscribe((data: any) => {
-      this.order = data.map((e: { payload: { doc: { id: string; data: () => Menu; }; }; }) => {
+      this.order = data.map((e: any) => {
         return { id: e.payload.doc.id, ...e.payload.doc.data() } as Menu;
       });
     });
   }
 
-  sumItem() {
-    const newNumber = this.counter + 1;
-    this.itemsToOrder.changeNumber(newNumber);
+  askingOrder(value: any, i: any) {
+    const newPedido = {
+      ...value,
+      id: i,
+      cantidad: 1,
+      totalPrice: value.price
+      };
+    this.itemsToOrder.getProducts(newPedido);
   }
-
 }
