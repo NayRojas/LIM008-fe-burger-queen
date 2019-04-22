@@ -1,12 +1,12 @@
 <div class="container-fluid">
     <div class="display">
-        <p>
+        <p class="font-style-p">
             Nombre del cliente
         </p>
-        <input #newClient (keyup.enter)="onClick(newClient.value)" (blur)="onClick(newClient.value); newClient.value='' " type="text">
+        <input placeholder="Escribe aquí" class= "capitalize" #newClient (keyup.enter)="onClick(newClient.value)" (blur)="onClick(newClient.value); newClient.value='' " type="text">
     </div>
     <div class="display">
-        <p>Mesa</p>
+        <p  class="font-style-p">Mesa</p>
         <select name="OS" #newTable (keyup.enter)="getTable(newTable.value)" (blur)="getTable(newTable.value); newTable.value='' " type="text">
     <option value="1" >1</option> 
     <option value="2">2</option> 

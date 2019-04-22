@@ -1,11 +1,14 @@
 <div class="container container-fluid half-container">
     <div class="background-gray padding ">
-        <p class="font-style-title">
-            Orden N°
-        </p>
+        <span class="font-style-title">
+            Orden N° {{numOrder}}
+        </span>
+        <span class="fecha date font-style-p text-far">{{ today | date: 'short' }}</span>
+
         <div class="font-style-p" (keyup.enter)="getTableNumber()">
             Mesa: {{ table }}
         </div>
+
         <div class="font-style-p" (keyup.enter)="getClientName()">
             {{ name | titlecase }} ha ordenado:
         </div>
@@ -13,7 +16,8 @@
     <div>
         <table class="table">
             <thead>
-                <tr>
+                <tr >
+                    <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col">Cant.</th>
                     <th scope="col" class="text-close">Items</th>
@@ -23,16 +27,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of ">
-                    <th class="black" (click)="lessItem()">
+                <tr *ngFor="let order of menuOrders" >
+                    <th class="black" (click)="lessItem(order, cantidad.value, order.id)">
                         <i class="fa fa-minus-circle" aria-hidden="true"></i>
                     </th>
-                    <!-- <td>{{item.quantity}}</td> -->
-                    <td>{{item.name}}</td>
-                    <td>{{item.price | currency: 'USD'}}</td>
-                    <td>$ 5</td>
-                    <td class="black" (click)="removeItem(item)">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    <th class="black" (click)="moreItem(order, cantidad.value, order.id)">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </th>
+                    <td><input class="none" type="number" min="1" max="10" [ngModel]="order.cantidad" #cantidad (change)="getQuantity(order, cantidad.value, order.id)"></td>
+                    <td>{{ order.name }}</td>
+                    <td>{{ order.price | currency: 'USD'}}</td>
+                    <td>{{ order.totalPrice | currency }}</td>
+                    <td>
+                        <a (click)="delete(order.id)" ><i class="fa fa-trash black"></i></a>
                     </td>
                 </tr>
             </tbody>
@@ -40,11 +47,12 @@
     </div>
 
     <div class="padding">
-        <p class="font-style-title ">Total <span class="font-style-dollar text-right">$ 00.00</span></p>
+        <p class="font-style-title ">Total <span class="font-style-dollar text-right">{{ totalPrice | currency }}</span></p>
     </div>
 
     <div>
-        <button class="btn centered font-style" data-toggle="modal" data-target="#exampleModalLong">ORDENAR</button>
-        <app-order-resume class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true"></app-order-resume>
+        <button class="btn centered font-style" data-toggle="modal" data-target="#exampleModalLong" (click)="sendToKitChen(today, totalPrice)">ENVIAR</button>
+        <button class="black"><i class="white fa fa-trash "></i></button>
+        <!-- <app-order-resume class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true"></app-order-resume> -->
     </div>
 </div>

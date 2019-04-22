@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemsToOrderService } from '../../services/local-service/items-to-order.service';
+import { ItemsToOrderService } from '../../services/local-service/offline-local-service';
 import { FirestoreService } from '../../services/firebase-service/firebase-service.service';
-import { Item } from '../../menu.model';
 
 
 @Component({
@@ -11,86 +10,57 @@ import { Item } from '../../menu.model';
 })
 export class OrderItemsComponent implements OnInit {
 
-  // ---------------------------------
-  ticket: Item[] = []
-
-  cartTotal = 0;
-  cartNumItems = 0;
-  quantity = 0;
-  // ---------------------------------
-
-  counter: number;
   name: string;
+  today: any;
   table: number;
-  product: string;
+  numOrder = 0 + 1;
+  menuOrders: any[] = [];
+  totalPrice: number;
+
+
 
   constructor(
     private itemsToOrder: ItemsToOrderService,
     private fb: FirestoreService) {
 
+    this.itemsToOrder.currentName.subscribe((name: any) => { this.name = name; } );
+    this.itemsToOrder.currentTable.subscribe((tab: any) => { this.table = tab; } );
+    this.itemsToOrder.montoTotal.subscribe((total: number) => { this.totalPrice = total; } );
+    this.itemsToOrder.menus.subscribe((menu: any) => { this.menuOrders = menu; } );
+  }
+  
 
+  lessItem(event: any, cantidadNueva: number, id: any) {
+    const newNumber = cantidadNueva - 1;
+    this.itemsToOrder.getNewQuantity(event, newNumber, id);
+  }
 
-    this.itemsToOrder.currentNumber.subscribe(numb => { this.counter = numb });
-    this.itemsToOrder.currentName.subscribe(name => { this.name = name });
-    this.itemsToOrder.currentTable.subscribe(tab => { this.table = tab });
-    this.itemsToOrder.currentItem.subscribe(item => { this.product = item });
+  moreItem(event: any, cantidadNueva: any, id: any) {
+    const sum = (parseInt(cantidadNueva) + 1);
+    this.itemsToOrder.getNewQuantity(event, sum, id);
+  }
+
+  getQuantity(event: any, cantidadNueva: number, id: any) {
+    this.itemsToOrder.getNewQuantity(event, cantidadNueva, id);
+  }
+
+  delete(id: string) {
+  this.itemsToOrder.updateProduct(id);
+  }
+
+  sendToKitChen(date: any, totalPrice: number) {
+    if (confirm('¿Has verificado la orden del cliente?') === true ) {
+      this.itemsToOrder.sendOrderConfirm(date, totalPrice);
+      // this.menuOrders = [];
+      // this.totalOrder = 0;
+      this.numOrder = this.numOrder + 1;
+    } else {
+      alert('Tu pedido no se ha enviado a cocina');
+    }
   }
 
   ngOnInit() {
-    // ---------------------------------------
-    this.itemsToOrder.currentTicket.subscribe(data => this.ticket = data)
-    this.itemsToOrder.currentTotal.subscribe(total => this.cartTotal = total)
-    this.itemsToOrder.currentCartNum.subscribe(num => this.cartNumItems = num)
-    // ---------------------------------------
-  }
-
-  addItem(item: Item) {
-    if(this.ticket.includes(item)){
-      this.ticket[this.ticket.indexOf(item)].quantity += 1;
-    } else {
-      this.ticket.push(item)
-    }
-    this.syncTicket();
-    this.calculateTotal();
-  }
-
-  syncTicket() {
-    this.itemsToOrder.changeTicket(this.ticket)
-  }
-
-  calculateTotal() {
-    let total = 0;
-    let cartItems = 0;
-
-    this.ticket.forEach((item: Item) => {
-      total += (item.price * item.quantity);
-      cartItems += item.quantity;
-    })
-    this.cartTotal = total;
-    this.cartNumItems = cartItems;
-
-    this.itemsToOrder.updateNumItems(this.cartNumItems);
-    this.itemsToOrder.updateTotal(this.cartTotal);
-  }
-
-  checkout(){
-    if(this.ticket.length > 0){
-      this.fb.pushOrders(this.ticket, this.cartTotal, this.cartNumItems);
-      this.clearCart();
-    }
-  }
-  
-  clearCart(){
-    this.ticket.forEach((item: Item) => {
-      item.quantity = 1;
-    })
-    this.ticket = [];
-    this.syncTicket();
-    this.calculateTotal();
-  }
-  lessItem() {
-    const newNumber = this.counter - 1;
-    this.itemsToOrder.changeNumber(newNumber);
+    this.today = new Date();
   }
 
   getClientName() {
@@ -101,11 +71,5 @@ export class OrderItemsComponent implements OnInit {
   getTableNumber() {
   const newTable = this.table;
   this.itemsToOrder.getTable(newTable);
-  }
-
-  getItem() {
-    const newItem = this.product;
-    this.itemsToOrder.changeItem(newItem);
-    console.log('entro al ts del componente')
   }
 }

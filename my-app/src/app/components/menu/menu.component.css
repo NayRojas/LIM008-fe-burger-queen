@@ -7,6 +7,18 @@
     padding: 1px;
 }
 
+.font-style-p {
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-family: 'Port Lligat Sans', sans-serif;
+    margin-bottom: 5px;
+}
+
+.font-style-btn {
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-family: 'Port Lligat Sans', sans-serif;
+}
 .container{
     height: 695px;
     overflow: hidden;
@@ -36,13 +48,45 @@
     padding: 0 5px 0 0;
 }
 
-div button{
+.menu-btn {
     width: 50%;
+    color: rgb(10, 10, 10);
+    background-color: rgb(252, 252, 252);
+    border-bottom-style: none;
+    border-radius: 6px;
+}
+
+
+div .menu-btn{
+    color: rgb(10, 10, 10);
+    background-color: rgb(252, 252, 252);
+    border-bottom-style: none;
+    border-radius: 6px;
 }
 
 .button-item{
     background: rgba(251, 222, 131, 0.99);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 7px;
-    width: 100%;
+    width: 50%;
+}
+
+li a{
+    color: rgba(82, 82, 82, 0.966);
+}
+
+li a:active{
+    color: rgb(10, 10, 10);
+}
+
+.background{
+    background-color:#1F1F1F;
+}
+
+.btn-active{
+    color: white;
+    background-color:#343a40;
+    width: 50%;
+    border-radius: 7px;
+    text-decoration: none;
 }
