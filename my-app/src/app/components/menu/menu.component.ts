@@ -1,9 +1,9 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 // import { FirestoreService } from 'src/app/services/firebase-service/firebase-service.service';
 import { Menu } from '../../menu.model';
-import { ActivatedRoute, Routes, Router, NavigationEnd } from '@angular/router';
-import { FirestoreService } from '../../services/firebase-service/firebase-service.service';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { ItemsToOrderService } from '../../services/local-service/items-to-order.service';
+import { FireStoreService } from '../../services/firebase-service/firebase-service.service';
 
 @Component({
   selector: 'app-menu',
@@ -17,7 +17,7 @@ export class MenuComponent implements OnInit {
 
 
   constructor(
-    public firebaseService: FirestoreService,
+    public firebaseService: FireStoreService,
     private route: ActivatedRoute,
     private router: Router,
     private itemsToOrder: ItemsToOrderService 

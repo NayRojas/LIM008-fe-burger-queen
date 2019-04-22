@@ -23,6 +23,7 @@ import { BrandWelcomeComponent } from './components/brand-welcome/brand-welcome.
 import { WaitressGetNameComponent } from './components/waitress-get-name/waitress-get-name.component';
 import { InitPageComponent } from './pages/init-page/init-page.component';
 import { NotFoundComponent } from './pages/core/not-found/not-found.component';
+import { FireStoreService } from './services/firebase-service/firebase-service.service';
 
 
 
@@ -49,7 +50,7 @@ import { NotFoundComponent } from './pages/core/not-found/not-found.component';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
 
-  providers: [],
+  providers: [FireStoreService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -8,7 +8,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 
-export class FirestoreService {
+export class FireStoreService {
   constructor(private firestore: AngularFirestore) {}
 
   getMenu(typeMenu: string) {
