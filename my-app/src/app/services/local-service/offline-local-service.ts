@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Menu, Orders, Producto } from '../../menu.model';
-import { FirestoreService } from '../firebase-service/firebase-service.service';
+import { FireStoreService } from '../firebase-service/firebase-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +31,7 @@ export class ItemsToOrderService {
     totalPriceOrder: 0
   };
 
-  constructor(public db: FirestoreService) { }
+  constructor(public db: FireStoreService) { }
 
   getName(newClient: string) {
     this.order = {

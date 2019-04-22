@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemsToOrderService } from '../../services/local-service/offline-local-service';
-import { FirestoreService } from '../../services/firebase-service/firebase-service.service';
+import { FireStoreService } from '../../services/firebase-service/firebase-service.service';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class OrderItemsComponent implements OnInit {
 
   constructor(
     private itemsToOrder: ItemsToOrderService,
-    private fb: FirestoreService) {
+    private fb: FireStoreService) {
 
     this.itemsToOrder.currentName.subscribe((name: any) => { this.name = name; } );
     this.itemsToOrder.currentTable.subscribe((tab: any) => { this.table = tab; } );

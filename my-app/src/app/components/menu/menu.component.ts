@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 // import { FirestoreService } from 'src/app/services/firebase-service/firebase-service.service';
-import { Menu} from '../../menu.model';
-import { ActivatedRoute, Routes, Router, NavigationEnd } from '@angular/router';
-import { FirestoreService } from '../../services/firebase-service/firebase-service.service';
+import { Menu } from '../../menu.model';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { FireStoreService } from '../../services/firebase-service/firebase-service.service';
 import { ItemsToOrderService } from '../../services/local-service/offline-local-service';
 
 @Component({
@@ -18,10 +18,9 @@ export class MenuComponent implements OnInit {
   products: any = [];
 
   constructor(
+    public firebaseService: FireStoreService,
     // Los servicios que almacenan la logica pura
     // Este almacena la lógica Firebase
-    public firebaseService: FirestoreService,
-    // Este almacena la lógica local
     private itemsToOrder: ItemsToOrderService,
     // Estos alamacenan los modulos enrutadores de @Angular
     private route: ActivatedRoute,
