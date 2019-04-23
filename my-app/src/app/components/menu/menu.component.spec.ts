@@ -12,7 +12,7 @@ xdescribe('MenuComponent', () => {
   let component: MenuComponent;
   let fixture: ComponentFixture<MenuComponent>;
 
-  let fireStoreServiceSpy: Object = jasmine.createSpyObj('Platform', {firebase: ''})
+  const fireStoreServiceSpy: object = jasmine.createSpyObj('Platform', {firebase: ''});
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -21,11 +21,11 @@ xdescribe('MenuComponent', () => {
       imports: [ RouterTestingModule ],
       providers: [
         { provide: FireStoreService, useValue: fireStoreServiceSpy },
-        { provide: ActivatedRoute, 
+        { provide: ActivatedRoute,
           useValue: { paramMap: of(convertToParamMap({id: 1})) }
         }
       ]
-    })
+    });
   }));
 
   beforeEach(() => {

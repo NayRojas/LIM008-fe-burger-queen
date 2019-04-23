@@ -5,7 +5,7 @@
     "background_color": "#FFC300",
     "display": "standalone",
     "scope": "/",
-    "start_url": "http://localhost:8080/",
+    "start_url": "https://burguerqueen-app.firebaseapp.com",
     "icons": [{
             "src": "assets/icons/icon-72x72.png",
             "sizes": "72x72",
