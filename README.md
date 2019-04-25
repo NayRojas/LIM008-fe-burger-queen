@@ -4,6 +4,8 @@
 <tr>
 <td>
   Burguer Queen App es un software diseñado para facilitar la labor interna del este restaurante, su función y diseño le permiten agilizar el tiempo de despacho de pedidos y llevar mejor control sobre las solicitudes de sus clientes. 
+
+  Esta implementado con tecnologías que le permiten carga rápida y diseño responsive para distintos dispositivos.
 </td>
 </tr>
 </table>
